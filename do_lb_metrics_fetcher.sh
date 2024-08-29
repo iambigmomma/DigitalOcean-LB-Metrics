@@ -62,9 +62,9 @@ seven_days_ago=$(($current_time - 604800))
 # Time periods array
 declare -a periods=(
   "$one_hour_ago $current_time"
-  "$one_day_ago $current_time"
-  "$three_days_ago $current_time"
-  "$seven_days_ago $current_time"
+  # "$one_day_ago $current_time"
+  # "$three_days_ago $current_time"
+  # "$seven_days_ago $current_time"
 )
 
 # Loop through predefined time periods and fetch metrics
