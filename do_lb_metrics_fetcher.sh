@@ -32,8 +32,8 @@ read -p "Enter Load Balancer ID from the list above: " lb_id
 echo "Select a category to fetch metrics:"
 echo "1) Frontend Metrics"
 echo "2) Droplet-Level Metrics"
-echo "3) Network-Level Metrics"
-read -p "Enter your choice (1-3): " category_choice
+# echo "3) Network-Level Metrics"
+read -p "Enter your choice (1-2): " category_choice
 
 # Assign endpoints based on user choice
 case $category_choice in
@@ -43,9 +43,9 @@ case $category_choice in
     2)
         endpoints="/load_balancer/droplets_http_session_duration_avg /load_balancer/droplets_http_session_duration_50p /load_balancer/droplets_http_session_duration_95p /load_balancer/droplets_http_response_time_avg /load_balancer/droplets_http_response_time_50p /load_balancer/droplets_http_response_time_95p /load_balancer/droplets_http_response_time_99p /load_balancer/droplets_queue_size /load_balancer/droplets_http_responses /load_balancer/droplets_connections /load_balancer/droplets_health_checks /load_balancer/droplets_downtime"
         ;;
-    3)
-        endpoints="/load_balancer/frontend_nlb_tcp_network_throughput /load_balancer/frontend_nlb_udp_network_throughput /load_balancer/load_balancer_firewall_dropped_bytes /load_balancer/load_balancer_firewall_dropped_packets"
-        ;;
+    # 3)
+    #     endpoints="/load_balancer/frontend_nlb_tcp_network_throughput /load_balancer/frontend_nlb_udp_network_throughput /load_balancer/load_balancer_firewall_dropped_bytes /load_balancer/load_balancer_firewall_dropped_packets"
+    #     ;;
     *)
         echo "Invalid selection."
         exit 1
@@ -73,7 +73,6 @@ for period in "${periods[@]}"; do
   echo "Fetching metrics from $start to $end..."
   for endpoint in $endpoints; do
     url="${base_url}/monitoring/metrics${endpoint}?lb_id=${lb_id}&start=${start}&end=${end}"
-    echo "URL: $url"
     response=$(curl -s -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $DO_API_TOKEN" "$url")
     echo "Metrics for $endpoint from $start to $end:"
     echo "$response"
