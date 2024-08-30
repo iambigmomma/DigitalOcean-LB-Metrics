@@ -7,8 +7,7 @@ This script, named `do_lb_metrics_fetcher.sh`, is designed to interactively fetc
 ## Features
 
 - **Interactive Load Balancer Selection**: Choose from a list of available load balancers.
-- **Categorized Metric Retrieval**: Select metrics grouped by category such as Frontend Metrics, Droplet-Level Metrics.
-<!-- , and Network-Level Metrics. -->
+- **Categorized Metric Retrieval**: Select metrics grouped by category such as Frontend Metrics, Droplet-Level Metrics, and Network-Level Metrics.
 - **Predefined Time Periods**: Automatically fetch metrics for the last 1 hour, 24 hours, 3 days, and 7 days.
 - **Cross-platform Compatibility**: Supports Unix-like environments including Linux and macOS.
 
